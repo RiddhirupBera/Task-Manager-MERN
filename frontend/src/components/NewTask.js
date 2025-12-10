@@ -2,6 +2,7 @@ import { useState } from 'react'
 import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
+import axios from "axios";
 
 export const NewTask = () =>{
 
@@ -31,13 +32,19 @@ export const NewTask = () =>{
             priority,
             date
         }
-        setTaskList([taskCurr,...taskList1]);
+        // setTaskList([taskCurr,...taskList1]);
         dispatch(add(taskCurr));
         
     }
     const deleteRow = (id) =>{
         setTaskList(taskList1.filter(item=>item.id!==id));
         dispatch(remove(id));
+    }
+    const callAPI = () =>{
+        axios.get("http://localhost:4000/")
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+
     }
 
     return(
@@ -49,7 +56,9 @@ export const NewTask = () =>{
       <input type="date" value={date} onChange={handleDate} className='inputBox'></input>
     </div>
     <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div>
-    <div className='row1'><button onClick={()=>{console.log("redux",taskList)}} className = 'addButton'>Check</button></div>
+    {/* <div className='row1'><button onClick={()=>{console.log("redux",taskList)}} className = 'addButton'>Check</button></div> */}
+    <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div>
+
 
     <div style={{paddingBottom : "40px"}}>
         <table className='tableStyle'>
@@ -63,7 +72,7 @@ export const NewTask = () =>{
                         </thead>
                         <tbody>
          
-        {taskList1.map((t)=>(
+        {taskList.map((t)=>(
             // <div className="row1">
                 <tr>
             <td>{t.task}</td>

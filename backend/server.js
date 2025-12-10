@@ -13,4 +13,4 @@ app.get("/",(req,res)=>{
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{console.log("Mongo Connected")}).catch(err=>console.log(err));
 
-app.listen(3000,()=>console.log("Server Running "))
+app.listen(4000,()=>console.log("Server Running "))
