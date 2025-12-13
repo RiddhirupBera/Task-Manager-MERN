@@ -10,7 +10,7 @@ export const NewTask = () =>{
     const taskList = useSelector(state => state.taskState.taskList);
 
     const [task,setTask] = useState("");
-    const [priority,setPriority] = useState("");
+    const [priority,setPriority] = useState("Medium");
     const [date,setDate] = useState("");
     const [taskList1,setTaskList] = useState([]);
     const [itemId, setItemId] = useState(0);
