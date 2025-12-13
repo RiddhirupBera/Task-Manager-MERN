@@ -285,3 +285,33 @@ body, html {
       0 0 45px rgba(2, 8, 109, 0.5);
   }
 }
+
+.topHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: #041423;
+  color: #00eaff;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 22px;
+  font-family: 'Orbitron';
+  border-bottom: 1px solid #00eaff55;
+  z-index: 1000;
+}
+
+.mainContent {
+  margin-top: 60px;       /* header height */
+  margin-left: 200px;    /* sidebar width */
+  padding: 20px;
+  min-height: calc(100vh - 60px);
+}
+
+/* active link highlight */
+.sideNav a.active {
+  color: #00eaff;
+  font-weight: bold;
+}
