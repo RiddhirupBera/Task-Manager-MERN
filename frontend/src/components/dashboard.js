@@ -16,8 +16,16 @@ export const Dashboard = () =>{
     });
     return(
         <>
-        <h1>Total : {total}</h1>
-        <h2>Priority : {priorityTaskWeek.length}</h2>
+        <div className='dashboardContainer'>
+            <div className='urgentGlow'> 
+                <h1>Priority : {priorityTaskWeek.length}</h1>
+            </div>
+            
+            <div className='mediumGlow'>
+                 <h1>Total : {total}</h1>
+            </div>
+            
+        </div>
         </>
     )
 }
