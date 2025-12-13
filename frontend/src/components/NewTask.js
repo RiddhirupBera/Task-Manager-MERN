@@ -34,6 +34,9 @@ export const NewTask = () =>{
         }
         // setTaskList([taskCurr,...taskList1]);
         dispatch(add(taskCurr));
+        setTask("");
+        setPriority("Medium");
+        setDate("");
         
     }
     const deleteRow = (id) =>{
@@ -51,8 +54,16 @@ export const NewTask = () =>{
     <div className="centered">
        <div className='pageHeading'>TODO</div>
     <div className="row1">
-      <input type="text" value={task} onChange={handleTask} className='inputBox'></input>
-      <input type="text" value={priority} onChange={handlepriority} className='inputBox'></input>
+        <label style={{color : "white"}} htmlFor="taskInput">Task</label>
+      <input id='taskInput' type="text" value={task} onChange={handleTask} className='inputBox' ></input>
+      {/* <input type="text" value={priority} onChange={handlepriority} className='inputBox'></input> */}
+      <label style={{color : "white"}} htmlFor="selectP">Priority</label>   
+        <select id = "selectP" value={priority} onChange={handlepriority} className='inputBoxSelect' > 
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+      <label style={{color : "white"}} htmlFor="taskInput">Deadline</label>
       <input type="date" value={date} onChange={handleDate} className='inputBox'></input>
     </div>
     <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div>
@@ -60,33 +71,7 @@ export const NewTask = () =>{
     <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div>
 
 
-    <div style={{paddingBottom : "40px"}}>
-        <table className='tableStyle'>
-            <thead>
-                            <tr>
-                                <th>Task</th>
-                                <th>Priority</th>
-                                <th>Deadline</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-         
-        {taskList.map((t)=>(
-            // <div className="row1">
-                <tr>
-            <td>{t.task}</td>
-            <td>{t.priority}</td>
-            <td>{t.date}</td>
-            <td><button onClick={()=>deleteRow(t.id)} className='deleteBtn'>❌</button></td>
-            </tr>
-            // </div>
-        ))}
-        
-        </tbody>
-        </table>
     
-    </div>
     </div>
     )
 }

@@ -96,6 +96,24 @@
   padding: 8px 14px;
   outline: none;
   transition: 0.2s;
+  margin-right : 1rem;
+  width: 8rem;
+}
+
+.inputBoxSelect{
+  background: rgba(255,255,255,0.05);
+  color: #e0f9ff;
+  border: 1px solid #00eaff55;
+  border-radius: 8px;
+  padding: 8px 18px ;
+  outline: none;
+  transition: 0.2s;
+
+  appearance: none;
+
+  margin-right : 1rem
+
+
 }
 
 .inputBox:focus {
@@ -155,4 +173,24 @@ body, html {
   background: linear-gradient(135deg, #020b13, #061a26, #040f1d);
   background-size: 400% 400%;
   animation: gradientMove 10s ease infinite;
+}
+
+.sideNav {
+  position: fixed;
+  top: 60px; /* below the fixed header */
+  left: 0;
+  width: 200px;
+  height: calc(100vh - 60px);
+  background: #062033;
+  border-right: 1px solid #00eaff33;
+  padding: 20px;
+  color: white;
+}
+
+.sideNav a {
+  display: block;
+  margin-bottom: 20px;
+  color: #e0f9ff;
+  text-decoration: none;
+  font-size: 18px;
 }
