@@ -3,6 +3,7 @@ import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
 import axios from "axios";
+import { Notification} from './notification';
 
 export const NewTask = () =>{
 
@@ -14,6 +15,10 @@ export const NewTask = () =>{
     const [date,setDate] = useState("");
     const [taskList1,setTaskList] = useState([]);
     const [itemId, setItemId] = useState(0);
+    const [notification, setNotification] = useState({
+    message: "",
+    type: ""
+  });
 
     const handleTask = (e) =>{
         setTask(e.target.value);
@@ -33,10 +38,16 @@ export const NewTask = () =>{
             date
         }
         // setTaskList([taskCurr,...taskList1]);
+        if(task==="" || priority==="" || date===""){
+            setNotification({ message: "Fill all fields", type: "error" });
+            autoClose();
+            return;
+        }
         dispatch(add(taskCurr));
         setTask("");
         setPriority("Medium");
         setDate("");
+        setNotification({message : "Task added successfully",type : "success"})
         
     }
     const deleteRow = (id) =>{
@@ -49,8 +60,19 @@ export const NewTask = () =>{
         .catch(err => console.log(err));
 
     }
+    const autoClose = () => {
+    setTimeout(() => {
+      setNotification({ message: "", type: "" });
+    }, 3000);
+  };
 
     return(
+        <>
+        <Notification
+        message={notification.message}
+        type={notification.type}
+        onClose={() => setNotification({ message: "", type: "" })}
+      />
     <div className="centered">
        <div className='pageHeading'>TODO</div>
     <div className="row1">
@@ -73,5 +95,6 @@ export const NewTask = () =>{
 
     
     </div>
+    </>
     )
 }
