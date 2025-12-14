@@ -74,7 +74,7 @@ export const NewTask = () =>{
         onClose={() => setNotification({ message: "", type: "" })}
       />
     <div className="centered">
-       <div className='pageHeading'>Add Task</div>
+       <div className='pageHeading'>ADD TASK</div>
     <div className="row1">
         <label style={{color : "white"}} htmlFor="taskInput">Task</label>
       <input id='taskInput' type="text" value={task} onChange={handleTask} className='inputBox' ></input>
