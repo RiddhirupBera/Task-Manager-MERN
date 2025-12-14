@@ -6,7 +6,7 @@ export const AppLayout = () => {
     <>
       {/* FIXED HEADER */}
       <div className="topHeader">
-        TODO DASHBOARD
+        TASK MANAGER      
       </div>
 
       {/* FIXED SIDEBAR */}

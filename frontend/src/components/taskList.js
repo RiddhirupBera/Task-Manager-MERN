@@ -16,6 +16,9 @@ export const TaskList = () =>{
 
     return(
         <div style={{paddingBottom : "40px"}}>
+            <div className='pageHeading'>
+                TASK LIST
+            </div>
         <table className='tableStyle'>
             <thead>
                             <tr>

@@ -74,7 +74,7 @@ export const NewTask = () =>{
         onClose={() => setNotification({ message: "", type: "" })}
       />
     <div className="centered">
-       <div className='pageHeading'>TODO</div>
+       <div className='pageHeading'>Add Task</div>
     <div className="row1">
         <label style={{color : "white"}} htmlFor="taskInput">Task</label>
       <input id='taskInput' type="text" value={task} onChange={handleTask} className='inputBox' ></input>
@@ -90,7 +90,7 @@ export const NewTask = () =>{
     </div>
     <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div>
     {/* <div className='row1'><button onClick={()=>{console.log("redux",taskList)}} className = 'addButton'>Check</button></div> */}
-    <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div>
+    {/* <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div> */}
 
 
     

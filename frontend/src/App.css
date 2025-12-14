@@ -124,7 +124,8 @@
 .pageHeading{
   font-size: 4rem;
   color: coral;
-  padding: 4rem;
+  padding-top: 0.5rem;
+  padding-bottom: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,6 +144,9 @@
   border-radius: 12px;
   box-shadow: 0 0 10px #00eaff80;
   transition: 0.3s ease;
+  width: 10rem;
+  height: 2.5rem;
+  margin-top : 90px
 }
 
 .addButton:hover{
@@ -201,6 +205,7 @@ body, html {
   justify-content: center;
   gap: 2rem;
   padding : 3rem;
+  flex-direction: column;
 }
 
 .tile1{
@@ -234,7 +239,13 @@ body, html {
   border-radius: 14px;
   padding: 20px;
   color: #fff;
-
+  width: 24rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   /* Glow */
   box-shadow:
     0 0 12px rgba(255, 60, 60, 0.6),
@@ -263,6 +274,39 @@ body, html {
   border-radius: 14px;
   padding: 20px;
   color: #fff;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow:
+    0 0 12px rgba(3, 98, 231, 0.6),
+    0 0 30px rgba(2, 8, 185, 0.4);
+
+  /* Smooth pulse */
+  animation: mediumPulse 1.8s infinite alternate;
+}
+.mediumGlow span {
+  color: #f0e8e8;
+  -webkit-text-stroke: 1.5px #cfec14; 
+}
+
+
+.mediumGlow2 {
+  background: rgba(2, 67, 124, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.6);
+  border-radius: 14px;
+  padding: 20px;
+  color: #fff;
+  width: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 
   /* Glow */
   box-shadow:
@@ -284,6 +328,30 @@ body, html {
       0 0 18px rgba(4, 88, 214, 0.8),
       0 0 45px rgba(2, 8, 109, 0.5);
   }
+}
+
+.mediumGlow2 span {
+  color: #f0e8e8;
+  -webkit-text-stroke: 1.5px #14cfec; 
+}
+.urgentGlow span {
+  color: #f0e8e8;
+  -webkit-text-stroke: 1.5px #ec1438; 
+}
+
+.urgentGlow:hover {
+  transform: translateY(-12px);
+
+}
+
+.mediumGlow:hover {
+  transform: translateY(-12px);
+
+}
+
+.mediumGlow2:hover {
+  transform: translateY(-12px);
+ 
 }
 
 .topHeader {
