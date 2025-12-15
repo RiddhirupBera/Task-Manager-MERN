@@ -43,6 +43,11 @@ export const NewTask = () =>{
             autoClose();
             return;
         }
+
+        axios.post("http://localhost:4000/addTask",taskCurr)
+        .then(res => console.log("POST ",res.data))
+        .catch(err => console.log(err));
+
         dispatch(add(taskCurr));
         setTask("");
         setPriority("Medium");
@@ -55,7 +60,7 @@ export const NewTask = () =>{
         dispatch(remove(id));
     }
     const callAPI = () =>{
-        axios.get("http://localhost:4000/")
+        axios.get("http://localhost:4000/addTask")
         .then(res => console.log(res.data))
         .catch(err => console.log(err));
 
@@ -90,7 +95,7 @@ export const NewTask = () =>{
     </div>
     <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div>
     {/* <div className='row1'><button onClick={()=>{console.log("redux",taskList)}} className = 'addButton'>Check</button></div> */}
-    {/* <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div> */}
+    <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div>
 
 
     
