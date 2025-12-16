@@ -29,13 +29,14 @@ export const NewTask = () =>{
     const handleDate = (e) =>{
         setDate(e.target.value);
     }
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         //setItemId(itemId + 1);
         let taskCurr = {
-            id : crypto.randomUUID(),
+            //id : crypto.randomUUID(),
             task,
             priority,
-            date
+            date,
+            status : "active"
         }
         // setTaskList([taskCurr,...taskList1]);
         if(task==="" || priority==="" || date===""){
@@ -44,20 +45,26 @@ export const NewTask = () =>{
             return;
         }
 
-        axios.post("http://localhost:4000/addTask",taskCurr)
-        .then(res => console.log("POST ",res.data))
-        .catch(err => console.log(err));
+        try{
+        const res = await axios.post("http://localhost:4000/addTask",taskCurr)
+        // .then(res => console.log("POST RESULT ",res.data))
+        // .catch(err => console.log(err));
+        console.log("post result ",res.data.task._id);
 
+        taskCurr._id = res.data.task._id;
         dispatch(add(taskCurr));
         setTask("");
         setPriority("Medium");
         setDate("");
         setNotification({message : "Task added successfully",type : "success"})
+        }catch(e){
+            console.log("Error ",e);
+        }
         
     }
-    const deleteRow = (id) =>{
-        setTaskList(taskList1.filter(item=>item.id!==id));
-        dispatch(remove(id));
+    const deleteRow = (_id) =>{
+        setTaskList(taskList1.filter(item=>item._id!==_id));
+        dispatch(remove(_id));
     }
     const callAPI = () =>{
         axios.get("http://localhost:4000/addTask")
@@ -95,7 +102,7 @@ export const NewTask = () =>{
     </div>
     <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div>
     {/* <div className='row1'><button onClick={()=>{console.log("redux",taskList)}} className = 'addButton'>Check</button></div> */}
-    <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div>
+    {/* <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div> */}
 
 
     

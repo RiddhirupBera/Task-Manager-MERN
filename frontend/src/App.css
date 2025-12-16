@@ -163,6 +163,22 @@
   transition: 0.2s ease;
 }
 
+.completeBtn{
+  background-color: transparent;
+  border: 1px solid #69df15;
+  color: #20ca1a;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.completeBtn:hover {
+  background-color: #52d704;
+  color: black;
+  box-shadow: 0 0 8px #98e803;
+}
+
 .deleteBtn:hover {
   background-color: #ff4d6d;
   color: black;

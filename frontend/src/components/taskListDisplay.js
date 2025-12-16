@@ -8,10 +8,19 @@ export const TaskListDisplay = ({tasks, title}) =>{
 
     const dispatch = useDispatch();
 
-    const deleteRow = (id) =>{
-        dispatch(remove(id));
+    const deleteRow = (t) =>{
+        axios.put(`http://localhost:4000/updateTask/${t._id}`, {
+        status : "deleted"
+        })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+
+        dispatch(remove(t._id));
     }
 
+    const completeRow = (id) =>{
+
+    }
     return(
         <div style={{paddingBottom : "40px", width : "90%"}}>
             <div className='pageHeading'>
@@ -23,6 +32,7 @@ export const TaskListDisplay = ({tasks, title}) =>{
                                 <th>Task</th>
                                 <th>Priority</th>
                                 <th>Deadline</th>
+                                <th>Completed</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -34,12 +44,14 @@ export const TaskListDisplay = ({tasks, title}) =>{
             <td>{t.task}</td>
             <td>{t.priority}</td>
             <td>{t.date}</td>
-            <td><button onClick={()=>deleteRow(t.id)} className='deleteBtn'>❌</button></td>
+            <td><button onClick={()=>completeRow(t._id)} className='completeBtn'>✅</button></td>
+            <td><button onClick={()=>deleteRow(t)} className='deleteBtn'>❌</button></td>
             </tr>
             // </div>
         ))}
         
         </tbody>
+        
         </table>
     
     </div>

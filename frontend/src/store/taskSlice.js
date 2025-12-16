@@ -12,7 +12,11 @@ const taskSlice = createSlice({
             return {...state,total : updatedTaskList.length, taskList : updatedTaskList};
         },
         remove(state,action){
-            const updatedTaskList = state.taskList.filter(item=>item.id!==action.payload);
+            const updatedTaskList = state.taskList.filter(item=>item._id!==action.payload);
+            return { ...state,total : updatedTaskList.length, taskList : updatedTaskList};
+        },
+        complete(state,action){
+            const updatedTaskList = state.taskList.filter(item=>item._id!==action.payload); 
             return { ...state,total : updatedTaskList.length, taskList : updatedTaskList};
         }
     }

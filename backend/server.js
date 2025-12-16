@@ -17,12 +17,44 @@ app.get("/",(req,res)=>{
 app.post("/addTask",async (req,res)=>{
     try{
         let newTask = new task(req.body);
-        newTask.save();
+        await newTask.save();
+        return res.status(201).json({
+            message: "Task added successfully",
+            task: newTask
+        });
 
     }catch(e){
-
+        return res.status(500).json({
+            message: "Error occurred",
+            error : e.message
+        });
     }
 });
+
+app.put("/updateTask/:id",async(req,res)=>{
+    try{
+        let id = req.params.id;
+        const updates = req.body;
+
+        const updatedTask = await task.findByIdAndUpdate(
+            id,
+            updates,
+        )
+
+        if (!updatedTask) {
+            return res.status(404).json({ message: "Task not found" });
+        }
+        res.json({
+            message : "Success"
+        })
+        
+    }catch(e){
+        return res.status(500).json({
+            message: "Failed"
+        });
+
+    }
+})
 mongoose.connect(process.env.MONGO_URI).then(()=>{console.log("Mongo Connected")}).catch(err=>console.log(err));
 
 app.listen(4000,()=>console.log("Server Running "))
