@@ -18,8 +18,14 @@ export const TaskListDisplay = ({tasks, title}) =>{
         dispatch(remove(t._id));
     }
 
-    const completeRow = (id) =>{
+    const completeRow = (t) =>{
+        axios.put(`http://localhost:4000/updateTask/${t._id}`, {
+        status : "completed"
+        })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
 
+        dispatch(remove(t._id));
     }
     return(
         <div style={{paddingBottom : "40px", width : "90%"}}>
@@ -44,7 +50,7 @@ export const TaskListDisplay = ({tasks, title}) =>{
             <td>{t.task}</td>
             <td>{t.priority}</td>
             <td>{t.date}</td>
-            <td><button onClick={()=>completeRow(t._id)} className='completeBtn'>✅</button></td>
+            <td><button onClick={()=>completeRow(t)} className='completeBtn'>✅</button></td>
             <td><button onClick={()=>deleteRow(t)} className='deleteBtn'>❌</button></td>
             </tr>
             // </div>
