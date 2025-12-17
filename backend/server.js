@@ -55,6 +55,24 @@ app.put("/updateTask/:id",async(req,res)=>{
 
     }
 })
+
+
+app.get("/activeTasks",async(req,res)=>{
+    try{
+        const activeTasks = await task.find({status : "active"});
+        console.log("Active tasks ",activeTasks);
+        res.status(200).json({
+            status : "Success",
+            message : activeTasks
+        })
+    }catch(e){
+        res.status(500).json({
+            status : "Error",
+            message : e.message
+        })
+    }
+})
+
 mongoose.connect(process.env.MONGO_URI).then(()=>{console.log("Mongo Connected")}).catch(err=>console.log(err));
 
 app.listen(4000,()=>console.log("Server Running "))

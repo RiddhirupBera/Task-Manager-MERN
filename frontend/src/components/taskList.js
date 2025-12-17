@@ -9,6 +9,7 @@ export const TaskList = () =>{
 
     const dispatch = useDispatch();
     const taskList = useSelector(state => state.taskState.taskList);
+    console.log("List",taskList)
 
     return(
     <>

@@ -3,6 +3,7 @@ import { Dashboard } from './components/dashboard';
 import { NewTask } from './components/NewTask';
 import { TaskList } from './components/taskList';
 import { AppLayout } from './layout/appLayout';
+import { ActiveTasksList } from './components/activeTasks';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/add" element={<NewTask />} />
         <Route path="/list" element={<TaskList />} />
+        <Route path="/activeTasks" element={<ActiveTasksList />}/>
       </Route>
     </Routes>
   );
