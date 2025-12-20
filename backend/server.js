@@ -59,11 +59,12 @@ app.put("/updateTask/:id",async(req,res)=>{
 
 app.get("/activeTasks",async(req,res)=>{
     try{
-        const activeTasks = await task.find({status : "active"});
-        console.log("Active tasks ",activeTasks);
+        //const activeTasks = await task.find({status : "active"});
+        const allTasks = await task.find({});
+        console.log("Active tasks ",allTasks);
         res.status(200).json({
             status : "Success",
-            message : activeTasks
+            message : allTasks
         })
     }catch(e){
         res.status(500).json({

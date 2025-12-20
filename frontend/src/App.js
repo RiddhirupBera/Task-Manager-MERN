@@ -5,6 +5,7 @@ import { TaskList } from './components/taskList';
 import { AppLayout } from './layout/appLayout';
 import { ActiveTasksList } from './components/activeTasks';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { AllTaskList } from './components/allTasks';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/add" element={<NewTask />} />
-        <Route path="/list" element={<TaskList />} />
+        <Route path="/list" element={<AllTaskList />} />
         <Route path="/activeTasks" element={<ActiveTasksList />}/>
       </Route>
     </Routes>

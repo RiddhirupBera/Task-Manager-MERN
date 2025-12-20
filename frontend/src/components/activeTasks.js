@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
@@ -7,25 +7,18 @@ import { TaskListDisplay } from './taskListDisplay';
 
 export const ActiveTasksList = () =>{
 
-    const [activeTasks,setActiveTasks] = useState([]);
+    const dispatch = useDispatch();
+    const taskList = useSelector(state => state.taskState.taskList);
+    const activeList = taskList.filter(t=>{
+        return t.status==="active";
+    })
 
-    useEffect(()=>{
-        const fetchActiveTasks = async() =>{
-        try{
-            const activeTasksList = await axios.get("http://localhost:4000/activeTasks");
-            setActiveTasks(activeTasksList.data.message);
-        }catch(e){
-            console.error("Failed to fetch active tasks", e);
-
-        }
-    }
-    fetchActiveTasks();
-    },[])
+    console.log("ilst",taskList)
 
     return(
     <>
     <div style={{marginLeft : "5rem"}}>
-        <TaskListDisplay tasks={activeTasks} title={"ACTIVE TASKS"}/>
+        <TaskListDisplay tasks={activeList} title={"ACTIVE TASKS"} display={false}/>
         </div>
     </>
     )

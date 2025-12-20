@@ -10,6 +10,10 @@ export const Dashboard = () =>{
     const total = useSelector(state=>state.taskState.total);
     const now = new Date();
 
+    const activeTaskList = taskList.filter(t=>{
+        return t.status==="active";
+    })
+
     const priorityTaskWeek = taskList.filter(t=>{
         const taskDate = new Date(t.date);
         const diffDays = (taskDate - now) / (1000 * 60 * 60 * 24);
@@ -37,7 +41,7 @@ export const Dashboard = () =>{
             </div>
 
             <div className='mediumGlow2'>
-                 <h1>Total : <span>{total}</span></h1>
+                 <h1>Total : <span>{activeTaskList.length}</span></h1>
             </div>
 
         </div>

@@ -35,8 +35,8 @@ export const AppLayout = () => {
       <div className="sideNav">
         <NavLink to="/" end>Dashboard</NavLink>
         <NavLink to="/add">Add Task</NavLink>
-        <NavLink to="/list">Task List</NavLink>
         <NavLink to="/activeTasks">Active Tasks</NavLink>
+        <NavLink to="/list">Task List</NavLink>
       </div>
 
       {/* PAGE CONTENT */}

@@ -5,7 +5,7 @@ import { add, remove } from '../store/taskSlice';
 import axios from "axios";
 import { TaskListDisplay } from './taskListDisplay';
 
-export const TaskList = () =>{
+export const AllTaskList = () =>{
 
     const dispatch = useDispatch();
     const taskList = useSelector(state => state.taskState.taskList);
@@ -15,7 +15,7 @@ export const TaskList = () =>{
     return(
     <>
     <div style={{marginLeft : "5rem"}}>
-        <TaskListDisplay tasks={taskList} title={"TASK LIST"}/>
+        <TaskListDisplay tasks={taskList} title={"ALL TASKS"} display={true}/>
         </div>
     </>
     )
