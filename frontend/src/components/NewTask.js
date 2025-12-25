@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
@@ -77,6 +77,9 @@ export const NewTask = () =>{
       setNotification({ message: "", type: "" });
     }, 3000);
   };
+    const highPriorityNum = taskList.filter(t => t.priority === "High" && t.status==="active");
+    const mediumPriorityNum = taskList.filter(t => t.priority === "Medium" && t.status==="active");
+    const lowPriorityNum = taskList.filter(t => t.priority === "Low" && t.status==="active");
 
     return(
         <>
@@ -99,12 +102,23 @@ export const NewTask = () =>{
         </select>
       <label style={{color : "white"}} htmlFor="taskInput">Deadline</label>
       <input type="date" value={date} onChange={handleDate} className='inputBox'></input>
+      <button onClick={handleSubmit} className = 'addButton'>➕</button>
     </div>
-    <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div>
+    {/* <div className='row1'><button onClick={handleSubmit} className = 'addButton'>Add</button></div> */}
     {/* <div className='row1'><button onClick={()=>{console.log("redux",taskList)}} className = 'addButton'>Check</button></div> */}
     {/* <div className='row1'><button onClick={callAPI} className = 'addButton'>Call</button></div> */}
 
-
+    <div className='row1'>
+        <div className='statusCountHigh'>
+        High : {highPriorityNum.length} 
+        </div>
+        <div className='statusCountMedium'>
+         Medium : {mediumPriorityNum.length} 
+        </div>
+        <div className='statusCountLow'>
+        Low : {lowPriorityNum.length}
+        </div>
+    </div>
     
     </div>
     </>

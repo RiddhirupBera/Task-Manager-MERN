@@ -108,9 +108,9 @@
   padding: 8px 18px ;
   outline: none;
   transition: 0.2s;
-
+  height: 2.2rem;
   appearance: none;
-
+  width: 10rem;
   margin-right : 1rem
 
 
@@ -140,13 +140,13 @@
   background: #00eaff;
   border: none;
   color: black;
-  padding: 10px 20px;
   border-radius: 12px;
   box-shadow: 0 0 10px #00eaff80;
   transition: 0.3s ease;
-  width: 10rem;
-  height: 2.5rem;
-  margin-top : 90px
+  width: 4rem;
+  height: 2.3rem;
+  margin-left: 2rem;
+  /* margin-top : 90px */
 }
 
 .addButton:hover{
@@ -450,3 +450,24 @@ transition:
     opacity: 1;
   }
 }
+
+.statusCountHigh{
+  font-size: 3rem;
+  color: #a60303;
+  padding: 3rem;
+  font-family: 'Orbitron', sans-serif;
+
+}
+.statusCountMedium{
+  font-size: 3rem;
+  color: #e4e710;
+  padding: 3rem;
+  font-family: 'Orbitron', sans-serif;
+}
+.statusCountLow{
+  font-size: 3rem;
+  color: #13df2b;
+  padding: 3rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
