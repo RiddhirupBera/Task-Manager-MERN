@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
@@ -10,9 +10,13 @@ export const Dashboard = () =>{
     const total = useSelector(state=>state.taskState.total);
     const now = new Date();
 
-    const activeTaskList = taskList.filter(t=>{
-        return t.status==="active";
-    })
+    // const activeTaskList = taskList.filter(t=>{
+    //     return t.status==="active";
+    // })
+
+    const activeTaskList = useMemo(()=>{
+        return taskList.filter(task=>task.status==="active");
+    },[taskList]);
 
     const priorityTaskWeek = taskList.filter(t=>{
         const taskDate = new Date(t.date);
