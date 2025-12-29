@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect , useCallback} from 'react'
 import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
@@ -7,25 +7,28 @@ import axios from "axios";
 export const TaskListDisplay = ({tasks, title, display}) =>{
     const dispatch = useDispatch();
 
-    const deleteRow =  (t) =>{
-        axios.put(`http://localhost:4000/updateTask/${t._id}`, {
-        status : "deleted"
-        })
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
-
-        dispatch(remove(t._id));
+    const deleteRow = useCallback(async (task) => {
+    try {
+        await axios.put(`http://localhost:4000/updateTask/${task._id}`, {
+        status: "deleted",
+        });
+        dispatch(remove(task._id));
+    } catch (err) {
+        console.error(err);
     }
+    }, [dispatch]);
 
-    const completeRow = (t) =>{
-        axios.put(`http://localhost:4000/updateTask/${t._id}`, {
-        status : "completed"
-        })
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
-
-        dispatch(remove(t._id));
-    }   
+const completeRow = useCallback(async (task) => {
+    try {
+        await axios.put(`http://localhost:4000/updateTask/${task._id}`, {
+        status: "completed",
+        });
+        dispatch(remove(task._id));
+    } catch (err) {
+        console.error(err);
+    }
+    }, [dispatch]);
+  
 
    
 

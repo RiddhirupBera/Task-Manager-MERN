@@ -18,7 +18,7 @@ export const Dashboard = () =>{
         return taskList.filter(task=>task.status==="active");
     },[taskList]);
 
-    const priorityTaskWeek = taskList.filter(t=>{
+    const priorityTaskWeek = activeTaskList.filter(t=>{
         const taskDate = new Date(t.date);
         const diffDays = (taskDate - now) / (1000 * 60 * 60 * 24);
         return diffDays <= 7 && diffDays >= 0 && t.priority==="High"; 
