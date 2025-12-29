@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import '../App.css'
 import { useDispatch,useSelector } from 'react-redux';
 import { add, remove } from '../store/taskSlice';
@@ -9,9 +9,13 @@ export const ActiveTasksList = () =>{
 
     const dispatch = useDispatch();
     const taskList = useSelector(state => state.taskState.taskList);
-    const activeList = taskList.filter(t=>{
-        return t.status==="active";
-    })
+    
+    const activeList = useMemo(()=>{
+        return taskList.filter(t=>{
+            return t.status==="active"
+        })        
+    },[taskList]);
+
 
     console.log("ilst",taskList)
 

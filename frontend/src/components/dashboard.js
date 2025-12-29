@@ -23,11 +23,12 @@ export const Dashboard = () =>{
         const diffDays = (taskDate - now) / (1000 * 60 * 60 * 24);
         return diffDays <= 7 && diffDays >= 0 && t.priority==="High"; 
     });
-    const taskWeek = taskList.filter(t=>{
+    const taskWeek = activeTaskList.filter(t=>{
         const taskDate = new Date(t.date);
         const diffDays = (taskDate - now) / (1000 * 60 * 60 * 24);
         return diffDays <= 7 && diffDays >= 0; 
     });
+
     return(
         <>
         <div className='pageHeading'>
@@ -51,6 +52,7 @@ export const Dashboard = () =>{
         </div>
         <div className='dashboardContainer'>
             <TaskListDisplay tasks={priorityTaskWeek} title={"Priority Tasks"}/>
+            <TaskListDisplay tasks={taskWeek} title={"Tasks This Week"}/>
         </div>
         </>
     )
