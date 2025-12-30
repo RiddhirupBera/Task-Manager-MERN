@@ -10,7 +10,6 @@ const taskSlice = createSlice({
         setTasks(state,action){
             state.taskList = action.payload;
             state.total = action.payload.length;
-            console.log("LIS",state.taskList)
             //return {...state,total : state.taskList.length, taskList : state.taskList};
         },
         add(state,action){

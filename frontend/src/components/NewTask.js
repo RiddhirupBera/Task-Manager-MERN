@@ -62,16 +62,7 @@ export const NewTask = () =>{
         }
         
     }
-    const deleteRow = (_id) =>{
-        setTaskList(taskList1.filter(item=>item._id!==_id));
-        dispatch(remove(_id));
-    }
-    const callAPI = () =>{
-        axios.get("http://localhost:4000/addTask")
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
-
-    }
+    
     const autoClose = () => {
     setTimeout(() => {
       setNotification({ message: "", type: "" });
